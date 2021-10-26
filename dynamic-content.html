@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CSS Accordion</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="accordion">
+      <input class="tab-input" type="radio" name="tab" id="tab1" data-index="0" checked />
+      <label for="tab1">Option 1</label>
+      <div class="content load-content">0</div>
+
+      <input class="tab-input" type="radio" name="tab" id="tab2" data-index="1" />
+      <label for="tab2">Option 2</label>
+      <div class="content load-content">1</div>
+
+      <input class="tab-input" type="radio" name="tab" id="tab3" data-index="2" />
+      <label for="tab3">Option 3</label>
+      <div class="content load-content">2</div>
+    </div>
+
+    <a href="index.html">Pure CSS accordion/tab example</a>
+
+    <script>
+        (function() {
+          let contents = [
+              "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo totam rerum eius cum? Molestias non mollitia, voluptatem reiciendis quisquam ea nulla aliquam eos. Iste quis reprehenderit minima, ab amet aliquid!</p>",
+              "<p> Reiciendis voluptatum autem doloribus similique reprehenderit asperiores consequuntur odio culpa. Id repudiandae nemo sit sapiente magni suscipit quam quis tenetur libero et! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quas molestias maiores officia ut deleniti, aspernatur obcaecati ab numquam hic?</p>",
+              "<p>Asperiores nam atque voluptatum assumenda possimus iure explicabo sit aliquid, consequuntur sint eum dicta expedita, magni recusandae eos officiis perferendis ullam repudiandae vero accusamus adipisci voluptatibus dolores! Harum iusto corrupti magni aliquam.</p>"
+          ];
+
+          /**
+           * Load content for active tab
+           * 
+           * @param {Number} index
+           */
+          function loadContent(index) {
+            let container = document.querySelector(`.content:nth-of-type(${index + 1})`);
+
+            if (!container.classList.contains('load-content')) {
+                return;
+            }
+
+            container.innerHTML = contents[index];
+            container.classList.remove('load-content');
+          }
+
+          document.body.querySelectorAll('.tab-input').forEach(labelElement => {
+            labelElement.addEventListener('click', (event) => {
+              loadContent(Number(event.target.getAttribute('data-index')))
+            });
+          });
+
+          loadContent(0);
+        })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+.accordion {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.accordion input {
+  display: none;
+}
+
+.accordion label {
+  background: #bfbfbf;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: block;
+  margin: 0 5px 5px 0;
+  order: -1;
+  padding: 8px 22px;
+}
+
+.accordion label:hover {
+  background: #969696;
+}
+
+.accordion .content {
+  margin: 0 0 1px 0;
+  padding: 10px 25px;
+  width: 100%;
+}
+
+.accordion input + label + .content {
+  display: none;
+}
+
+.accordion input:checked + label {
+  background: #ebebeb;
+  border: 1px solid #bfbfbf;
+}
+
+.accordion input:checked + label + .content {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .accordion label {
+    margin-right: auto;
+    order: initial;
+    width: 100%;
+  }
+}
